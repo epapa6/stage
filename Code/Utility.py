@@ -1,21 +1,11 @@
-import json
-from os import path
-from numpy.core.fromnumeric import transpose
-
-from pandas.core.construction import array
-from numpy.lib.function_base import append
-from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
-from scikit_weak.classification import WeaklySupervisedKNeighborsClassifier
-
-import Settings as st
-import numpy as np
-import pandas as pd
-
 import itertools
-import re
+import json
 import os
-import time
-import logging
+import re
+
+import numpy as np
+from scikit_weak.classification import WeaklySupervisedKNeighborsClassifier
+from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 
 np.set_printoptions(suppress=True)
 

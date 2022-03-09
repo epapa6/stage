@@ -1,15 +1,13 @@
-from numpy.core.fromnumeric import mean
-from Code import Utility as ut
-
-import Settings as st
-import numpy as np
-import time
 import logging
+import time
 
+import numpy as np
+from numpy.core.fromnumeric import mean
 from scikit_weak.utils import DiscreteEstimatorSmoother
 from sklearn.model_selection import StratifiedKFold
-from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+
+import Settings as st
 
 
 def main(
