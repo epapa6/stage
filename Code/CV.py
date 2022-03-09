@@ -39,7 +39,7 @@ def main(
     for train_index, test_index in skf.split(x, y):
         x_train = x[train_index]
         x_test = x[test_index]
-        y_train = y[train_index]
+        # y_train = y[train_index]
         y_test = y[test_index]
         y_fuzzy_train = y_fuzzy[train_index]
 

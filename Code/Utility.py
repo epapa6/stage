@@ -51,12 +51,12 @@ def normal_predict(
 
 
 def grid(
-        grid):
-    property_value = [grid[x] for x in grid]
-    property = [x for x in grid]
+        gr):
+    prop_value = [gr[x] for x in gr]
+    prop = [x for x in gr]
 
-    combinations = list(itertools.product(*property_value))
-    list_combinations = [dict(zip(property, combination))
+    combinations = list(itertools.product(*prop_value))
+    list_combinations = [dict(zip(prop, combination))
                          for combination in combinations]
 
     return list_combinations
@@ -64,9 +64,9 @@ def grid(
 
 def clean_json(
         datasets):
-    dir = './Results/JSON/'
+    directory = './Results/JSON/'
 
-    files_in_dir = os.listdir(dir)
+    files_in_dir = os.listdir(directory)
     filtered_files = [
         file for file in files_in_dir if file.endswith(".json")]
 
@@ -74,7 +74,7 @@ def clean_json(
         file_name = dataset.split("/")[-1]
         file = file_name.split(".")[0] + ".json"
         if file in filtered_files:
-            path_to_file = os.path.join(dir, file)
+            path_to_file = os.path.join(directory, file)
             os.remove(path_to_file)
 
 
