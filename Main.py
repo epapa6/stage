@@ -21,22 +21,20 @@ def preparation(url):
     dataset, n_label, features, row, n_initial_rows = pr.all_preprocesing_steps(url, st.max_samples())
 
     ut.write_on_dict(name_dataset, 'Dataset', name_dataset)
-    ut.write_on_dict(name_dataset, 'Classi', n_label)
+    ut.write_on_dict(name_dataset, 'Classes', n_label)
     ut.write_on_dict(name_dataset, 'Features', features)
     ut.write_on_dict(name_dataset, 'CurrentRows', row)
     ut.write_on_dict(name_dataset, 'OriginalRows', n_initial_rows)
 
     logging.warning("{} {} {} {} {}".format(name_dataset, n_label, features, row, n_initial_rows))
 
-    '''
-    execution('DELIN', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('GeneticRoughSetSelectorLambda', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('GeneticRoughSetSelectorConservative', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('GeneticRoughSetSelectorDominance', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('RoughSetSelectorLambda', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('RoughSetSelectorConservative', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    execution('RoughSetSelectorDominance', name_dataset, dataset, ut.generic_train(), ut.normal_predict())
-    '''
+    execution('DELIN', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GeneticRoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GeneticRoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GeneticRoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('RoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('RoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('RoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
 
 
 if __name__ == '__main__':
