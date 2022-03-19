@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.ERROR)
 def execution(str_model, name_dataset, dataset, train, predict):
     metrics = cv.main(str_model, dataset, train, predict, name_dataset)
     for key in metrics:
-        ut.write_on_dict(name_dataset, str_model + key, metrics[key])
+        ut.write_on_dict(name_dataset, str_model + " - " + key, metrics[key])
 
 
 def preparation(url):

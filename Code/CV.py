@@ -58,10 +58,10 @@ def main(
     micro_f1_cv = mean(micro_f1_array_cv)
     macro_f1_cv = mean(macro_f1_array_cv)
 
-    logging.error('{} {} {} {} -------- {}s'.format(name_dataset, str_model,
-                                                    np.around(bal_acc_array_cv, decimals=3),
-                                                    np.around(bal_cv, decimals=3),
-                                                    round(execution_time, 3)))
+    logging.error('{}: {}, {} - {} -------- {}s'.format(name_dataset, str_model,
+                                                        np.around(bal_acc_array_cv, decimals=3),
+                                                        np.around(bal_cv, decimals=3),
+                                                        round(execution_time, 3)))
     return {
         'acc': acc_cv,
         'balacc': bal_cv,

@@ -28,7 +28,7 @@ def results_csv(paths, new_dir):
     df.to_csv('./Results/{}/dataset.csv'.format(new_dir), index=False)
 
 
-pathsJsons = load_path_json_files('./Results/JSON/')
+paths_jsons = load_path_json_files('./Results/JSON/')
 
 # bisogna decidere il nome da dare alla nuova cartella
-results_csv(pathsJsons, '30')
+results_csv(paths_jsons, '30')

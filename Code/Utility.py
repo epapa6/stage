@@ -99,11 +99,10 @@ def write_on_dict(
             json.dump(dictionary, outfile, indent=4)
 
 
-def extract_name_dataset(
-        url):
+def extract_name_dataset(url):
     matches = re.finditer('/', url)
     matches_positions = [match.start() for match in matches]
 
     last_slash = matches_positions[-1] + 1
 
-    return url[last_slash - 4]
+    return url[last_slash:-4]
