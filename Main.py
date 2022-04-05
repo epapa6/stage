@@ -29,9 +29,11 @@ def preparation(url):
     logging.warning("{} {} {} {} {}".format(name_dataset, n_label, features, row, n_initial_rows))
 
     execution('DELIN', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+
     execution('GeneticRoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GeneticRoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GeneticRoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+
     execution('RoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('RoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('RoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
@@ -48,6 +50,7 @@ if __name__ == '__main__':
     ut.clean_json(datasets)
 
     multicore = True
+    # multicore = False
 
     if multicore:
         with Pool(4) as p:
