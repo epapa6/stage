@@ -17,7 +17,14 @@ def main(
         predict,
         name_dataset,
         k=5):
+
     model_name = str_model
+
+    smoother = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k),
+                                         type='fuzzy')
+
+    # smt = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k), type='fuzzy')
+
     split_cv = st.split_cv()
     start_time = time.time()
 
@@ -32,9 +39,8 @@ def main(
                           shuffle=True,
                           random_state=0)
     np.random.seed(0)
-    smt = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k),
-                                    type='fuzzy')
-    y_fuzzy = smt.fit_transform(x, y)
+
+    y_fuzzy = smoother.fit_transform(x, y)
 
     for train_index, test_index in skf.split(x, y):
         x_train = x[train_index]

@@ -3,7 +3,6 @@ from scikit_weak.feature_selection import DELIN, RoughSetSelector, GeneticRoughS
 
 def chose_classifier(
         classifier):
-
     if classifier == 'DELIN':
         return DELIN(n_iters=10, k=5, d=0.75)
 
@@ -41,14 +40,14 @@ def get_grid(
     if model_name == 'RoughSetSelector':
         return {
             'n_neighbors': [3, 5, 7, 10],
-            'method': ['conservative', 'lambda'],
+            'method': ['conservative', 'lambda', 'dominance'],
             'l': [0.1, 0.25, 0.5, 0.75, 0.9],
             'epsilon': [0.0, 0.01, 0.05, 0.1, 0.25, 0.5]
         }
     if model_name == 'GeneticRoughSetSelector':
         return {
             'n_neighbors': [3, 5, 7, 10],
-            'method': ['conservative', 'lambda'],
+            'method': ['conservative', 'lambda', 'dominance'],
             'l': [0.1, 0.25, 0.5, 0.75, 0.9],
             'epsilon': [0.0, 0.01, 0.05, 0.1, 0.25, 0.5],
             'n_iters': [100, 1000],
@@ -59,17 +58,15 @@ def get_grid(
 
 def get_dataset():
     datasets = [
-        './Datasets/credit.csv'
-
-    ]
-
-    """
         './Datasets/avila.csv',
         './Datasets/car.csv',
         './Datasets/cancerwisconsin.csv',
         './Datasets/banknote.csv'
-    
+    ]
+
+    """
         './Datasets/cargo.csv'
+        './Datasets/credit.csv',
         './Datasets/crowd.csv',
         './Datasets/diabetes.csv',
         './Datasets/digits.csv',
