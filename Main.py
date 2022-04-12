@@ -29,7 +29,7 @@ def preparation(url):
     logging.warning("{} {} {} {} {}".format(name_dataset, n_label, features, row, n_initial_rows))
 
     execution('DELIN', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-
+    '''
     execution('GeneticRoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GeneticRoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GeneticRoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
@@ -37,6 +37,10 @@ def preparation(url):
     execution('RoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('RoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('RoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    '''
+    execution('RRLClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('WeaklySupervisedKNeighborsClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('WeaklySupervisedKRadiusClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
 
 
 if __name__ == '__main__':

@@ -1,11 +1,13 @@
 from scikit_weak.feature_selection import DELIN, RoughSetSelector, GeneticRoughSetSelector
+from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighborsClassifier, \
+    WeaklySupervisedRadiusClassifier
 
 
 def chose_classifier(
         classifier):
     if classifier == 'DELIN':
         return DELIN(n_iters=10, k=5, d=0.75)
-
+    '''
     if classifier == 'RoughSetSelectorLambda':
         return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
                                 neighborhood='nearest', discrete=False, method='lambda',
@@ -18,7 +20,7 @@ def chose_classifier(
         return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
                                 neighborhood='nearest', discrete=False, method='dominance',
                                 n_neighbors=5, epsilon=0.05)
-
+    
     if classifier == 'GeneticRoughSetSelectorLambda':
         return GeneticRoughSetSelector(random_state=0, discrete=False, n_iters=10, neighborhood='nearest',
                                        n_neighbors=5, method='lambda', l=0.5, epsilon=0.05)
@@ -28,6 +30,15 @@ def chose_classifier(
     if classifier == 'GeneticRoughSetSelectorDominance':
         return GeneticRoughSetSelector(random_state=0, discrete=False, n_iters=10, neighborhood='nearest',
                                        n_neighbors=5, method='dominance', epsilon=0.05)
+    '''
+    if classifier == 'RRLClassifier':
+        return RRLClassifier(random_state=0, n_estimators=5)
+
+    if classifier == 'WeaklySupervisedKNeighborsClassifier':
+        return WeaklySupervisedKNeighborsClassifier(k=5)
+
+    if classifier == 'WeaklySupervisedKRadiusClassifier':
+        return WeaklySupervisedRadiusClassifier(radius=5)
 
 
 def get_grid(
