@@ -50,9 +50,9 @@ def main(
         y_fuzzy_train = y_fuzzy[train_index]
 
         clf = st.chose_classifier(model_name)
-        reducer, estimator = train(x_train, y_fuzzy_train, clf)
+        clf = train(x_train, y_fuzzy_train, clf)
 
-        result = predict(x_test, y_test, reducer, estimator)
+        result = predict(x_test, y_test, clf)
         acc_array_cv.append(result['acc'])
         bal_acc_array_cv.append(result['balacc'])
         micro_f1_array_cv.append(result['microf1'])
