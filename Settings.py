@@ -1,4 +1,4 @@
-from scikit_weak.feature_selection import DELIN, RoughSetSelector, GeneticRoughSetSelector
+from scikit_weak.feature_selection import DELIN
 from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighborsClassifier, \
     WeaklySupervisedRadiusClassifier
 
@@ -6,7 +6,7 @@ from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighbors
 def chose_classifier(
         classifier):
     if classifier == 'DELIN':
-        return DELIN(n_iters=10, k=5, d=0.75)
+        return DELIN(k=5, d=0.75, n_iters=100)
     '''
     if classifier == 'RoughSetSelectorLambda':
         return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
@@ -32,7 +32,7 @@ def chose_classifier(
                                        n_neighbors=5, method='dominance', epsilon=0.05)
     '''
     if classifier == 'RRLClassifier':
-        return RRLClassifier(random_state=0, n_estimators=5)
+        return RRLClassifier(random_state=0, n_estimators=100, resample=True)
 
     if classifier == 'WeaklySupervisedKNeighborsClassifier':
         return WeaklySupervisedKNeighborsClassifier(k=5)
@@ -70,15 +70,16 @@ def get_grid(
 def get_dataset():
     datasets = [
         './Datasets/avila.csv',
-        './Datasets/car.csv',
+        './Datasets/banknote.csv',
         './Datasets/cancerwisconsin.csv',
-        './Datasets/banknote.csv'
-    ]
-
-    """
-        './Datasets/cargo.csv'
+        './Datasets/car.csv',
         './Datasets/credit.csv',
         './Datasets/crowd.csv',
+        './Datasets/data0.csv',
+        './Datasets/data5.csv',
+        './Datasets/data10.csv',
+        './Datasets/data25.csv',
+        './Datasets/data50.csv'
         './Datasets/diabetes.csv',
         './Datasets/digits.csv',
         './Datasets/frog-family.csv',
@@ -91,10 +92,10 @@ def get_dataset():
         './Datasets/iris.csv',
         './Datasets/mice.csv',
         './Datasets/mushroom.csv',
+        './Datasets/myocardial.csv',
         './Datasets/obesity.csv',
         './Datasets/occupancy.csv',
         './Datasets/pen.csv',
-        './Datasets/qualitywine.csv',
         './Datasets/robot.csv',
         './Datasets/sensorless.csv',
         './Datasets/shill.csv',
@@ -103,11 +104,20 @@ def get_dataset():
         './Datasets/thyroid.csv',
         './Datasets/vowel.csv',
         './Datasets/wifi.csv',
-        './Datasets/wine.csv',
-        './Datasets/20newsgroups.csv',
-        './Datasets/myocardial.csv',
-        './Datasets/micromass.csv'
-        """
+        './Datasets/wine.csv'
+    ]
+
+    '''
+    ERROR:
+    './Datasets/20newsgroups.csv',
+    './Datasets/micromass.csv'
+    '''
+
+    '''
+    WARNING:
+    './Datasets/cargo.csv',         # The least populated class in y has only 3 members, less than n_split = 5
+    './Datasets/qualitywine.csv',   # The least populated class in y has only 2 members, less than n_splits=5
+    '''
 
     return datasets
 
