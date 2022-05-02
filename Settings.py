@@ -76,10 +76,6 @@ def get_grid(
 def get_dataset():
     datasets = [
         './Datasets/avila.csv'
-    ]
-
-    '''
-    TEMP:
         './Datasets/banknote.csv',
         './Datasets/cancerwisconsin.csv',
         './Datasets/car.csv',
@@ -115,7 +111,7 @@ def get_dataset():
         './Datasets/vowel.csv',
         './Datasets/wifi.csv',
         './Datasets/wine.csv'
-    '''
+    ]
 
     '''
     ERROR:
