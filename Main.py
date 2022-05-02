@@ -1,5 +1,6 @@
 import logging
 import os
+
 from multiprocessing import Pool
 
 import Settings as st
@@ -7,6 +8,7 @@ from Code import CV as cv
 from Code import Preprocessing as pr
 from Code import Utility as ut
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 logging.basicConfig(level=logging.ERROR)
 
 
@@ -29,18 +31,11 @@ def preparation(url):
     logging.warning("{} {} {} {} {}".format(name_dataset, n_label, features, row, n_initial_rows))
 
     execution('DELIN', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    '''
-    execution('GeneticRoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('GeneticRoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('GeneticRoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-
-    execution('RoughSetSelectorLambda', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('RoughSetSelectorConservative', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('RoughSetSelectorDominance', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    '''
     execution('RRLClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('WeaklySupervisedKNeighborsClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('WeaklySupervisedKRadiusClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GRMLogistic', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GRMSVM', name_dataset, dataset, ut.generic_train, ut.normal_predict)
 
 
 if __name__ == '__main__':
@@ -53,8 +48,8 @@ if __name__ == '__main__':
 
     ut.clean_json(datasets)
 
-    multicore = True
-    # multicore = False
+    # multicore = True
+    multicore = False
 
     if multicore:
         with Pool(4) as p:

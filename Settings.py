@@ -1,6 +1,6 @@
 from scikit_weak.feature_selection import DELIN
 from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighborsClassifier, \
-    WeaklySupervisedRadiusClassifier
+    WeaklySupervisedRadiusClassifier, GRMLinearClassifier
 
 
 def chose_classifier(
@@ -40,6 +40,12 @@ def chose_classifier(
     if classifier == 'WeaklySupervisedKRadiusClassifier':
         return WeaklySupervisedRadiusClassifier(radius=5)
 
+    if classifier == 'GRMLogistic':
+        return GRMLinearClassifier(loss='logistic', max_epochs=10, regularizer='l2', l2=1)
+
+    if classifier == 'GRMSVM':
+        return GRMLinearClassifier(loss='hinge', max_epochs=10, regularizer='l2', l2=1)
+
 
 def get_grid(
         model_name):
@@ -69,7 +75,11 @@ def get_grid(
 
 def get_dataset():
     datasets = [
-        './Datasets/avila.csv',
+        './Datasets/avila.csv'
+    ]
+
+    '''
+    TEMP:
         './Datasets/banknote.csv',
         './Datasets/cancerwisconsin.csv',
         './Datasets/car.csv',
@@ -79,7 +89,7 @@ def get_dataset():
         './Datasets/data5.csv',
         './Datasets/data10.csv',
         './Datasets/data25.csv',
-        './Datasets/data50.csv'
+        './Datasets/data50.csv',
         './Datasets/diabetes.csv',
         './Datasets/digits.csv',
         './Datasets/frog-family.csv',
@@ -105,7 +115,7 @@ def get_dataset():
         './Datasets/vowel.csv',
         './Datasets/wifi.csv',
         './Datasets/wine.csv'
-    ]
+    '''
 
     '''
     ERROR:
