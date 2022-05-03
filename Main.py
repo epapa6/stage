@@ -36,6 +36,7 @@ def preparation(url):
     execution('WeaklySupervisedKRadiusClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GRMLogistic', name_dataset, dataset, ut.generic_train, ut.normal_predict)
     execution('GRMSVM', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('PseudoLabelsClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
 
 
 if __name__ == '__main__':

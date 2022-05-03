@@ -33,5 +33,10 @@
     "GRMSVM - balacc": 0.14285714285714285,
     "GRMSVM - microf1": 0.131,
     "GRMSVM - macrof1": 0.033092555567312894,
-    "GRMSVM - time": 259.69583320617676
+    "GRMSVM - time": 259.69583320617676,
+    "PseudoLabelsClassifier - acc": 0.648,
+    "PseudoLabelsClassifier - balacc": 0.6393304943551248,
+    "PseudoLabelsClassifier - microf1": 0.648,
+    "PseudoLabelsClassifier - macrof1": 0.6108314115939505,
+    "PseudoLabelsClassifier - time": 24.417524576187134
 }

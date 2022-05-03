@@ -1,36 +1,13 @@
 from scikit_weak.feature_selection import DELIN
 from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighborsClassifier, \
-    WeaklySupervisedRadiusClassifier, GRMLinearClassifier
+    WeaklySupervisedRadiusClassifier, GRMLinearClassifier, PseudoLabelsClassifier
 
 
 def chose_classifier(
         classifier):
     if classifier == 'DELIN':
         return DELIN(k=5, d=0.75, n_iters=100)
-    '''
-    if classifier == 'RoughSetSelectorLambda':
-        return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
-                                neighborhood='nearest', discrete=False, method='lambda',
-                                n_neighbors=5, l=0.5, epsilon=0.05)
-    if classifier == 'RoughSetSelectorConservative':
-        return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
-                                neighborhood='nearest', discrete=False, method='conservative',
-                                n_neighbors=5, epsilon=0.05)
-    if classifier == 'RoughSetSelectorDominance':
-        return RoughSetSelector(random_state=0, n_iters=10, search_strategy='approximate',
-                                neighborhood='nearest', discrete=False, method='dominance',
-                                n_neighbors=5, epsilon=0.05)
-    
-    if classifier == 'GeneticRoughSetSelectorLambda':
-        return GeneticRoughSetSelector(random_state=0, discrete=False, n_iters=10, neighborhood='nearest',
-                                       n_neighbors=5, method='lambda', l=0.5, epsilon=0.05)
-    if classifier == 'GeneticRoughSetSelectorConservative':
-        return GeneticRoughSetSelector(random_state=0, discrete=False, n_iters=10, neighborhood='nearest',
-                                       n_neighbors=5, method='conservative', epsilon=0.05)
-    if classifier == 'GeneticRoughSetSelectorDominance':
-        return GeneticRoughSetSelector(random_state=0, discrete=False, n_iters=10, neighborhood='nearest',
-                                       n_neighbors=5, method='dominance', epsilon=0.05)
-    '''
+
     if classifier == 'RRLClassifier':
         return RRLClassifier(random_state=0, n_estimators=100, resample=True)
 
@@ -45,6 +22,9 @@ def chose_classifier(
 
     if classifier == 'GRMSVM':
         return GRMLinearClassifier(loss='hinge', max_epochs=10, regularizer='l2', l2=1)
+
+    if classifier == 'PseudoLabelsClassifier':
+        return PseudoLabelsClassifier(n_iterations=10)
 
 
 def get_grid(
@@ -75,7 +55,7 @@ def get_grid(
 
 def get_dataset():
     datasets = [
-        './Datasets/avila.csv'
+        './Datasets/avila.csv',
         './Datasets/banknote.csv',
         './Datasets/cancerwisconsin.csv',
         './Datasets/car.csv',
@@ -91,7 +71,6 @@ def get_dataset():
         './Datasets/frog-family.csv',
         './Datasets/frog-genus.csv',
         './Datasets/frog-species.csv',
-        './Datasets/hcv.csv',
         './Datasets/htru.csv',
         './Datasets/ionosfera.csv',
         './Datasets/iranian.csv',
@@ -106,8 +85,6 @@ def get_dataset():
         './Datasets/sensorless.csv',
         './Datasets/shill.csv',
         './Datasets/sonar.csv',
-        './Datasets/taiwan.csv',
-        './Datasets/thyroid.csv',
         './Datasets/vowel.csv',
         './Datasets/wifi.csv',
         './Datasets/wine.csv'
@@ -116,7 +93,12 @@ def get_dataset():
     '''
     ERROR:
     './Datasets/20newsgroups.csv',
-    './Datasets/micromass.csv'
+    './Datasets/micromass.csv',
+    
+    './Datasets/hcv.csv',           # IndexError: index 3 is out of bounds for axis 1 with size 3
+    './Datasets/taiwan.csv',        # ValueError: This solver needs samples of at least 2 classes in the data, but the 
+                                    # data contains only one class: 0
+    './Datasets/thyroid.csv',       # IndexError: index 2 is out of bounds for axis 1 with size 2
     '''
 
     '''
