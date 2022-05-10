@@ -55,40 +55,57 @@ def get_grid(
 
 def get_dataset():
     datasets = [
-        './Datasets/avila.csv',
-        './Datasets/banknote.csv',
-        './Datasets/cancerwisconsin.csv',
+
+
+        './Datasets/sensorless.csv',
+
+        './Datasets/wifi.csv',
+
+    ]
+
+    '''
+    './Datasets/avila.csv',
+
         './Datasets/car.csv',
-        './Datasets/credit.csv',
+
         './Datasets/crowd.csv',
-        './Datasets/data0.csv',
-        './Datasets/data5.csv',
-        './Datasets/data10.csv',
-        './Datasets/data25.csv',
-        './Datasets/data50.csv',
-        './Datasets/diabetes.csv',
-        './Datasets/digits.csv',
+
         './Datasets/frog-family.csv',
-        './Datasets/frog-genus.csv',
-        './Datasets/frog-species.csv',
-        './Datasets/htru.csv',
-        './Datasets/ionosfera.csv',
+
         './Datasets/iranian.csv',
-        './Datasets/iris.csv',
-        './Datasets/mice.csv',
+
         './Datasets/mushroom.csv',
         './Datasets/myocardial.csv',
-        './Datasets/obesity.csv',
-        './Datasets/occupancy.csv',
+
         './Datasets/pen.csv',
-        './Datasets/robot.csv',
-        './Datasets/sensorless.csv',
-        './Datasets/shill.csv',
-        './Datasets/sonar.csv',
-        './Datasets/vowel.csv',
-        './Datasets/wifi.csv',
-        './Datasets/wine.csv'
-    ]
+    '''
+
+    '''
+    OK:
+    './Datasets/banknote.csv',
+    './Datasets/cancerwisconsin.csv',
+    './Datasets/credit.csv',
+    # './Datasets/data0.csv',
+        # './Datasets/data5.csv',
+        # './Datasets/data10.csv',
+        # './Datasets/data25.csv',
+        # './Datasets/data50.csv',
+        # './Datasets/diabetes.csv',
+        # './Datasets/digits.csv',
+         # './Datasets/frog-genus.csv',
+        # './Datasets/frog-species.csv',
+        # './Datasets/htru.csv',
+        # './Datasets/ionosfera.csv',
+         # './Datasets/iris.csv',
+        # './Datasets/mice.csv',
+         # './Datasets/obesity.csv',
+        # './Datasets/occupancy.csv',
+        # './Datasets/robot.csv',
+        # './Datasets/shill.csv',
+        # './Datasets/sonar.csv',
+        # './Datasets/vowel.csv',
+        # './Datasets/wine.csv'
+    '''
 
     '''
     ERROR:
