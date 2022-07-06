@@ -91,11 +91,6 @@ def get_dataset():
     ]
 
     '''
-    OK:
-     
-    '''
-
-    '''
     ERROR:
     './Datasets/20newsgroups.csv',
     './Datasets/micromass.csv',
@@ -109,7 +104,7 @@ def get_dataset():
     '''
     WARNING:
     './Datasets/cargo.csv',         # The least populated class in y has only 3 members, less than n_split = 5
-    './Datasets/qualitywine.csv',   # The least populated class in y has only 2 members, less than n_splits=5
+    './Datasets/qualitywine.csv',   # The least populated class in y has only 2 members, less than n_splits = 5
     '''
 
     return datasets

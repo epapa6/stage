@@ -49,8 +49,7 @@ if __name__ == '__main__':
 
     ut.clean_json(datasets)
 
-    multicore = True
-    # multicore = False
+    multicore = True  # False se si vuole disattivare il multicore
 
     if multicore:
         with Pool(4) as p:

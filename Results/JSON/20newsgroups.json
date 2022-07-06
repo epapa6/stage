@@ -1,7 +1,0 @@
-{
-    "Dataset": "20newsgroups",
-    "Classes": 20,
-    "Features": 1000,
-    "CurrentRows": 1000,
-    "OriginalRows": 11313
-}

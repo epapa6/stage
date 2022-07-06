@@ -23,8 +23,6 @@ def main(
     smoother = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k),
                                          type='fuzzy')
 
-    # smt = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k), type='fuzzy')
-
     split_cv = st.split_cv()
     start_time = time.time()
 
