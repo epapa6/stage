@@ -20,7 +20,7 @@ def execution(str_model, name_dataset, dataset, train, predict):
 
 def preparation(url):
     name_dataset = ut.extract_name_dataset(url)
-    dataset, n_label, features, row, n_initial_rows = pr.all_preprocesing_steps(url, st.max_samples())
+    dataset, n_label, features, row, n_initial_rows = pr.all_preprocessing_steps(url, st.max_samples())
 
     ut.write_on_dict(name_dataset, 'Dataset', name_dataset)
     ut.write_on_dict(name_dataset, 'Classes', n_label)
@@ -30,13 +30,20 @@ def preparation(url):
 
     logging.warning("{} {} {} {} {}".format(name_dataset, n_label, features, row, n_initial_rows))
 
-    execution('DELIN', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('RRLClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('WeaklySupervisedKNeighborsClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('WeaklySupervisedKRadiusClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('GRMLogistic', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('GRMSVM', name_dataset, dataset, ut.generic_train, ut.normal_predict)
-    execution('PseudoLabelsClassifier', name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('DELIN',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('RRLClassifier',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('WeaklySupervisedKNeighborsClassifier',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('WeaklySupervisedKRadiusClassifier',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GRMLogistic',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('GRMSVM',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
+    execution('PseudoLabelsClassifier',
+              name_dataset, dataset, ut.generic_train, ut.normal_predict)
 
 
 if __name__ == '__main__':

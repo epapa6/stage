@@ -32,10 +32,8 @@ def undersampling(my_data, max_samples):
         n_col = my_data.shape[1]
         my_data = my_data.rename(columns={n_col - 1: "target"})
 
-        # print(my_data['target'].value_counts(normalize=True))
         my_data = my_data.sample(
             n=max_samples, random_state=1).reset_index(drop=True)
-        # print(my_data['target'].value_counts(normalize=True))
 
     logging.info("Data shape after undersampling {}".format(my_data.shape))
 
@@ -46,13 +44,14 @@ def class_number(y):
     return len(set(y))
 
 
-def all_preprocesing_steps(path, max_samples=-1, undersample=True):
+def all_preprocessing_steps(path, max_samples=-1, undersample=True):
     my_data = load_dataset_to_pandas(path)
     n_initial_rows = my_data.shape[0]
     if undersample:
         if max_samples == -1:
             max_samples = n_initial_rows
         my_data = undersampling(my_data, max_samples)
+
     (x, y) = split_xy(my_data)
 
     scaler = MinMaxScaler(feature_range=(0, 1))

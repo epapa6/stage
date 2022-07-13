@@ -3,8 +3,8 @@ from scikit_weak.classification import RRLClassifier, WeaklySupervisedKNeighbors
     WeaklySupervisedRadiusClassifier, GRMLinearClassifier, PseudoLabelsClassifier
 
 
-def chose_classifier(
-        classifier):
+def chose_classifier(classifier):
+
     if classifier == 'DELIN':
         return DELIN(k=5, d=0.75, n_iters=100)
 
@@ -27,8 +27,8 @@ def chose_classifier(
         return PseudoLabelsClassifier(n_iterations=10)
 
 
-def get_grid(
-        model_name):
+def get_grid(model_name):
+
     if model_name == 'DELIN':
         return {
             'k': [3, 5, 7, 10],

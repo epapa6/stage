@@ -4,7 +4,6 @@ import os
 import re
 
 import numpy as np
-from scikit_weak.classification import WeaklySupervisedKNeighborsClassifier
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 
 np.set_printoptions(suppress=True)
@@ -26,13 +25,6 @@ def generic_train(
         x_train,
         y_train,
         classifier):
-    # reducer = classifier.fit(x_train, y_train)
-    # x_red = reducer.transform(x_train)
-    # x_red = reducer.predict_proba(x_train)
-    # estimator = WeaklySupervisedKNeighborsClassifier(k=5)
-    # estimator.fit(x_red, y_train)
-    # estimator.fit(x_train, y_train)
-
     classifier.fit(x_train, y_train)
 
     return classifier
@@ -42,7 +34,6 @@ def normal_predict(
         x_test,
         y_true,
         classifier):
-
     y_pred = classifier.predict(x_test)
 
     return {

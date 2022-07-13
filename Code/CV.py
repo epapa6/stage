@@ -11,17 +11,13 @@ import Settings as st
 
 
 def main(
-        str_model,
+        model_name,
         dataset,
         train,
         predict,
         name_dataset,
         k=5):
-
-    model_name = str_model
-
-    smoother = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k),
-                                         type='fuzzy')
+    smoother = DiscreteEstimatorSmoother(KNeighborsClassifier(n_neighbors=k), type='fuzzy')
 
     split_cv = st.split_cv()
     start_time = time.time()
@@ -33,24 +29,23 @@ def main(
 
     x, y = dataset
 
-    skf = StratifiedKFold(n_splits=split_cv,
-                          shuffle=True,
-                          random_state=0)
+    skfold = StratifiedKFold(n_splits=split_cv,
+                             shuffle=True,
+                             random_state=0)
     np.random.seed(0)
 
     y_fuzzy = smoother.fit_transform(x, y)
 
-    for train_index, test_index in skf.split(x, y):
+    for train_index, test_index in skfold.split(x, y):
         x_train = x[train_index]
         x_test = x[test_index]
-        # y_train = y[train_index]
-        y_test = y[test_index]
         y_fuzzy_train = y_fuzzy[train_index]
+        y_test = y[test_index]
 
         clf = st.chose_classifier(model_name)
         clf = train(x_train, y_fuzzy_train, clf)
-
         result = predict(x_test, y_test, clf)
+
         acc_array_cv.append(result['acc'])
         bal_acc_array_cv.append(result['balacc'])
         micro_f1_array_cv.append(result['microf1'])
@@ -62,7 +57,7 @@ def main(
     micro_f1_cv = mean(micro_f1_array_cv)
     macro_f1_cv = mean(macro_f1_array_cv)
 
-    logging.error('{}: {}, {} - {} -------- {}s'.format(name_dataset, str_model,
+    logging.error('{}: {}, {} - {} -------- {}s'.format(name_dataset, model_name,
                                                         np.around(bal_acc_array_cv, decimals=3),
                                                         np.around(bal_cv, decimals=3),
                                                         round(execution_time, 3)))
